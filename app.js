@@ -9,7 +9,7 @@ const app = express();
 
 app.use(express.json());
 
-mongoose.connect('mongodb://127.0.0.1:27017/my-express-app')
+mongoose.connect('mongodb+srv://soumen:k5Uu4iM5vBDdfvqv@cluster0.c5spa4r.mongodb.net/my-express-app?retryWrites=true&w=majority')
   .then(() => {
     console.log('Connected to MongoDB');
   })

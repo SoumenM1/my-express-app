@@ -25,9 +25,6 @@ exports.getAllPosts = async (req, res) => {
 
 // Get a specific post
 exports.getPostById = async (req, res) => {
-    if(posts.length === 0){
-        res.status(404).json({"msg":"Data Not Found"})
-    }
     res.status(200).json(res.post);
 };
 
@@ -53,7 +50,7 @@ exports.updatePost = async (req, res) => {
 // Delete a post
 exports.deletePost = async (req, res) => {
   try {
-    await res.post.remove();
+    await res.post.deleteOne();
     res.status(201).json({ message: 'Post deleted' });
   } catch (error) {
     res.status(500).json({ message: error.message });

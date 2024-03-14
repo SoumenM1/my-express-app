@@ -5,8 +5,17 @@ exports.likePost = async (req, res) => {
   try {
     res.post.likes++;
     const updatedPost = await res.post.save();
-    res.json(updatedPost);
+    res.status(201).json(updatedPost);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
 };
+exports.dislikePost = async (req, res) => {
+    try {
+      res.post.dislikes++;
+      const updatedPost = await res.post.save();
+      res.status(201).json(updatedPost);
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  };

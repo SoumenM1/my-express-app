@@ -18,9 +18,6 @@ mongoose.connect('mongodb+srv://soumen:k5Uu4iM5vBDdfvqv@cluster0.c5spa4r.mongodb
   });
 
   // Routes
-  app.use('/',(req,res)=>{
-    res.json({msg:"--WELL COME:--"}).status(200)
-  })
 app.use('/api/users', userRoutes);
 app.use('/api',postRoutes);
 app.use('/api',likeRoutes);

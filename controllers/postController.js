@@ -14,7 +14,10 @@ exports.createPost = async (req, res) => {
 exports.getAllPosts = async (req, res) => {
   try {
     const posts = await Post.find();
-    res.json(posts);
+    if(posts.length === 0){
+        res.json({"msg":"Data Not Found"}).status(404)
+    }
+    res.status(200).json(posts);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -22,7 +25,10 @@ exports.getAllPosts = async (req, res) => {
 
 // Get a specific post
 exports.getPostById = async (req, res) => {
-  res.json(res.post);
+    if(posts.length === 0){
+        res.status(404).json({"msg":"Data Not Found"})
+    }
+    res.status(200).json(res.post);
 };
 
 // Update a post
@@ -38,7 +44,7 @@ exports.updatePost = async (req, res) => {
   }
   try {
     const updatedPost = await res.post.save();
-    res.json(updatedPost);
+    res.status(201).json(updatedPost);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -48,7 +54,7 @@ exports.updatePost = async (req, res) => {
 exports.deletePost = async (req, res) => {
   try {
     await res.post.remove();
-    res.json({ message: 'Post deleted' });
+    res.status(201).json({ message: 'Post deleted' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

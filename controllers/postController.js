@@ -28,10 +28,10 @@ exports.createPost = async (req, res) => {
 exports.getAllPosts = async (req, res) => {
   try {
     // Extract userId from the request
-    const userId = req.userId; // Assuming userId is present in the request
+    // const userId = req.userId; // Assuming userId is present in the request
 
     // Find all posts associated with the userId
-    const posts = await Post.find({ userId });
+    const posts = await Post.find();
 
     if (posts.length === 0) {
       return res.status(404).json({ message: 'No posts found for the user' });
